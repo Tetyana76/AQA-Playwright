@@ -1,152 +1,153 @@
-import { expect } from '@playwright/test'; 
+import { expect } from '@playwright/test';
 
 export default class Registration {
   constructor(page) {
     this.page = page;
 
-    this.selectors = {
-      signInButton: 'button:has-text("Sign In")',
-      registrationForm: 'h4:has-text("Registration")',
-      signupNameField: 'input#signupName',
-      signupLastNameField: 'input#signupLastName',
-      signupEmailField: 'input#signupEmail',
-      signupPasswordField: 'input#signupPassword',
-      signupRepeatPassword: 'input#signupRepeatPassword',
-      registerButton: 'button:has-text("Register")',
-      registrationButton: 'button:has-text("Registration")',
-      nameRequired: 'p:has-text("Name required")',
-      nameInvalid: 'p:has-text("Name is invalid")',
-      lengthNameRequired: 'p:has-text("Name has to be from 2 to 20 characters long")',
-      lastNameRequired: 'p:has-text("Last name required")',
-      lastNameInvalid: 'p:has-text("Last name is invalid")',
-      lengthLastNameRequired: 'p:has-text("Last name has to be from 2 to 20 characters long")',
-      emailRequired: 'p:has-text("Email required")',
-      emailIncorrect: 'p:has-text("Email is incorrect")',
-      passwordRequired: 'p:has-text("Password required")',
-      passwordInvalid: 'p:has-text("Password has to be from 8 to 15 characters long and contain at least one integer, one capital, and one small letter")',
-      reenterPasswordRequired: 'p:has-text("Re-enter password required")',
-      reenterPasswordInvalid: 'p:has-text("Passwords do not match")',
-      garagePageHeader: 'h1:has-text("Garage")',
+    this.locators = {
+      signInButton: this.page.locator('button:has-text("Sign In")'),
+      registrationForm: this.page.locator('h4:has-text("Registration")'),
+      signupNameField: this.page.locator('input#signupName'),
+      signupLastNameField: this.page.locator('input#signupLastName'),
+      signupEmailField: this.page.locator('input#signupEmail'),
+      signupPasswordField: this.page.locator('input#signupPassword'),
+      signupRepeatPassword: this.page.locator('input#signupRepeatPassword'),
+      registerButton: this.page.locator('button:has-text("Register")'),
+      registrationButton: this.page.locator('button:has-text("Registration")'),
+      nameRequired: this.page.locator('p:has-text("Name required")'),
+      nameInvalid: this.page.locator('p:has-text("Name is invalid")'),
+      lengthNameRequired: this.page.locator('p:has-text("Name has to be from 2 to 20 characters long")'),
+      lastNameRequired: this.page.locator('p:has-text("Last name required")'),
+      lastNameInvalid: this.page.locator('p:has-text("Last name is invalid")'),
+      lengthLastNameRequired: this.page.locator('p:has-text("Last name has to be from 2 to 20 characters long")'),
+      emailRequired: this.page.locator('p:has-text("Email required")'),
+      emailIncorrect: this.page.locator('p:has-text("Email is incorrect")'),
+      passwordRequired: this.page.locator('p:has-text("Password required")'),
+      passwordInvalid: this.page.locator(
+        'p:has-text("Password has to be from 8 to 15 characters long and contain at least one integer, one capital, and one small letter")'
+      ),
+      reenterPasswordRequired: this.page.locator('p:has-text("Re-enter password required")'),
+      reenterPasswordInvalid: this.page.locator('p:has-text("Passwords do not match")'),
+      garagePageHeader: this.page.locator('h1:has-text("Garage")'),
     };
   }
 
   async clickSignInButton() {
-    await this.page.waitForSelector(this.selectors.signInButton, { state: 'visible' });
-    await this.page.locator(this.selectors.signInButton).click();
+    await this.locators.signInButton.waitFor({ state: 'visible' });
+    await this.locators.signInButton.click();
   }
 
   async clickRegistrationButton() {
-    await this.page.waitForSelector(this.selectors.registrationButton, { state: 'visible' });
-    await this.page.locator(this.selectors.registrationButton).click();
-    await this.page.waitForSelector(this.selectors.registrationForm, { state: 'visible' });
+    await this.locators.registrationButton.waitFor({ state: 'visible' });
+    await this.locators.registrationButton.click();
+    await this.locators.registrationForm.waitFor({ state: 'visible' });
   }
 
   async fillSignupName(name) {
-    await this.page.locator(this.selectors.signupNameField).fill(name);
+    await this.locators.signupNameField.fill(name);
   }
 
   async fillSignupLastName(lastName) {
-    await this.page.locator(this.selectors.signupLastNameField).fill(lastName);
+    await this.locators.signupLastNameField.fill(lastName);
   }
 
   async fillSignupEmail(email) {
-    await this.page.locator(this.selectors.signupEmailField).fill(email);
+    await this.locators.signupEmailField.fill(email);
   }
 
   async fillSignupPassword(password) {
-    await this.page.locator(this.selectors.signupPasswordField).fill(password);
+    await this.locators.signupPasswordField.fill(password);
   }
 
   async fillReenterPassword(password) {
-    await this.page.locator(this.selectors.signupRepeatPassword).fill(password);
+    await this.locators.signupRepeatPassword.fill(password);
   }
 
   registerButton() {
-    return this.page.locator(this.selectors.registerButton);
+    return this.locators.registerButton;
   }
 
   async clickRegisterButton() {
-    await this.page.locator(this.selectors.registerButton).click();
+    await this.locators.registerButton.click();
   }
 
   signupName() {
-    return this.page.locator(this.selectors.signupNameField);
+    return this.locators.signupNameField;
   }
 
   signupLastName() {
-    return this.page.locator(this.selectors.signupLastNameField);
+    return this.locators.signupLastNameField;
   }
 
   signupEmail() {
-    return this.page.locator(this.selectors.signupEmailField);
+    return this.locators.signupEmailField;
   }
 
   signupPassword() {
-    return this.page.locator(this.selectors.signupPasswordField);
+    return this.locators.signupPasswordField;
   }
 
   signupRepeatPassword() {
-    return this.page.locator(this.selectors.signupRepeatPassword);
+    return this.locators.signupRepeatPassword;
   }
 
   nameRequired() {
-    return this.page.locator(this.selectors.nameRequired);
+    return this.locators.nameRequired;
   }
 
   nameInvalid() {
-    return this.page.locator(this.selectors.nameInvalid);
+    return this.locators.nameInvalid;
   }
 
   lengthNameRequired() {
-    return this.page.locator(this.selectors.lengthNameRequired);
+    return this.locators.lengthNameRequired;
   }
 
   lastNameRequired() {
-    return this.page.locator(this.selectors.lastNameRequired);
+    return this.locators.lastNameRequired;
   }
 
   lastNameInvalid() {
-    return this.page.locator(this.selectors.lastNameInvalid);
+    return this.locators.lastNameInvalid;
   }
 
   lengthLastNameRequired() {
-    return this.page.locator(this.selectors.lengthLastNameRequired);
+    return this.locators.lengthLastNameRequired;
   }
 
   emailRequired() {
-    return this.page.locator(this.selectors.emailRequired);
+    return this.locators.emailRequired;
   }
 
   emailIncorrect() {
-    return this.page.locator(this.selectors.emailIncorrect);
+    return this.locators.emailIncorrect;
   }
 
   passwordRequired() {
-    return this.page.locator(this.selectors.passwordRequired);
+    return this.locators.passwordRequired;
   }
 
   passwordInvalid() {
-    return this.page.locator(this.selectors.passwordInvalid);
+    return this.locators.passwordInvalid;
   }
 
   reenterPasswordRequired() {
-    return this.page.locator(this.selectors.reenterPasswordRequired);
+    return this.locators.reenterPasswordRequired;
   }
 
   reenterPasswordInvalid() {
-    return this.page.locator(this.selectors.reenterPasswordInvalid);
+    return this.locators.reenterPasswordInvalid;
   }
 
-  async verifyRedirectToGaragePage(page) {
-    await page.waitForURL("https://qauto.forstudy.space/panel/garage");
-    const currentURL = page.url();
+  async verifyRedirectToGaragePage() {
+    await this.page.waitForURL("https://qauto.forstudy.space/panel/garage");
+    const currentURL = this.page.url();
     if (currentURL !== "https://qauto.forstudy.space/panel/garage") {
-        throw new Error(`Expected URL to be "https://qauto.forstudy.space/panel/garage" but found "${currentURL}"`);
+      throw new Error(`Expected URL to be "https://qauto.forstudy.space/panel/garage" but found "${currentURL}"`);
     }
   }
 
   async verifyGaragePageElements() {
-    const garageElement = await this.page.locator(this.selectors.garagePageHeader);
-    await expect(garageElement).toBeVisible();
+    await expect(this.locators.garagePageHeader).toBeVisible();
   }
 }

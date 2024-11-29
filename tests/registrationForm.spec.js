@@ -32,7 +32,7 @@ test.describe('Registration form validation', () => {
   await registration.verifyGaragePageElements(page);
 });
 
-  test.only('Name field: Empty name (error message and red borders)', async () => {
+  test('Name field: Empty name (error message and red borders)', async () => {
     await registration.fillSignupName('');
     await registration.signupLastName().click();
     await expect(registration.nameRequired()).toBeVisible();

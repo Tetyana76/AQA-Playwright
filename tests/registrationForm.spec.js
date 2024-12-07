@@ -7,13 +7,13 @@ let basePage;
 let registration;
 
 test.describe('Registration form validation', () => {
-  test.beforeEach(async ({ page, baseURL }, testInfo) => {
-    const config = testInfo.project.use;
-
+  test.beforeEach(async ({ page, baseURL }) => {
+    // const config = testInfo.project.use;
+    const { defaultCredentials } = test.info().project.use;
     basePage = new BasePage(page);
     registration = new Registration(page);
 
-    await basePage.navigateToMainPageWithLogin(config.defaultCredentials);
+    await basePage.navigateToMainPageWithLogin(defaultCredentials, baseURL);
     await registration.clickSignInButton();
     await registration.clickRegistrationButton();
   });
@@ -28,8 +28,8 @@ test.describe('Registration form validation', () => {
   await registration.fillReenterPassword(randomUser.password);
   await registration.clickRegisterButton();
     
-  await registration.verifyRedirectToGaragePage(page);
-  await registration.verifyGaragePageElements(page);
+  await registration.verifyRedirectToGaragePage();
+  await registration.verifyGaragePageElements();
 });
 
   test('Name field: Empty name (error message and red borders)', async () => {

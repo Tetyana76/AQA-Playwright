@@ -8,7 +8,9 @@
     "test:all": "playwright test --headed",
     "test:chrome": "playwright test --project chrome --headed",
     "lint": "eslint",
-    "lint:fix": "eslint --fix"
+    "lint:fix": "eslint --fix",
+    "test:quato-custom-env:headed": "cross-env ENV_FILE=./env-files/.env.qauto npx playwright test --headed --project=chrome",
+    "test:quato2-custom-env:headed": "cross-env ENV_FILE=./env-files/.env.qauto2 npx playwright test --headed --project=chrome"
   },
   "author": "",
   "license": "ISC",
@@ -17,11 +19,14 @@
     "@eslint/js": "^9.15.0",
     "@playwright/test": "^1.49.0",
     "@types/node": "^22.9.3",
+    "cross-env": "^7.0.3",
+    "dotenv-cli": "^7.4.4",
     "eslint": "^9.15.0",
     "eslint-plugin-playwright": "^2.1.0",
     "globals": "^15.12.0"
   },
   "dependencies": {
-    "@faker-js/faker": "^9.2.0"
+    "@faker-js/faker": "^9.2.0",
+    "dotenv": "^16.4.7"
   }
 }

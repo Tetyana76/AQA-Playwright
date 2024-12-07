@@ -1,11 +1,19 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
 // require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+// dotenv.config();
+console.log('Using ENV_FILE:', process.env.ENV_FILE);
+dotenv.config({ path: process.env.ENV_FILE || './.env' });
+
+console.log('BASE_URL:', process.env.BASE_URL);
+console.log('Username:', process.env.user);
+console.log('Password:', process.env.password);
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -26,10 +34,10 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://qauto.forstudy.space/',
+    baseURL: process.env.BASE_URL,
     defaultCredentials: {
-      username: "guest",
-      password: "welcome2qauto"
+      username: process.env.user, 
+      password: process.env.password,
     },
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
@@ -70,7 +78,7 @@ export default defineConfig({
     // },
     {
       name: 'chrome',
-      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+      use: { ...devices['Desktop Chrome'], channel: 'chrome', headless: false },
     },
   ],
 

@@ -3,9 +3,9 @@ export default class BasePage {
     this.page = page;
   }
 
-  async navigateToMainPageWithLogin(defaultCredentials) {
+  async navigateToMainPageWithLogin(defaultCredentials, baseURL) {
     const { username, password } = defaultCredentials;
     await this.page.context().setHTTPCredentials({ username, password });
-    await this.page.goto('/');
+    await this.page.goto(baseURL);
   }
 }

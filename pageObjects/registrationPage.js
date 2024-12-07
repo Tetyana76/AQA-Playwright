@@ -1,4 +1,7 @@
 import { expect } from '@playwright/test';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export default class Registration {
   constructor(page) {
@@ -140,10 +143,12 @@ export default class Registration {
   }
 
   async verifyRedirectToGaragePage() {
-    await this.page.waitForURL("https://qauto.forstudy.space/panel/garage");
+    console.log('BASE_URL:', process.env.BASE_URL);
+    const expectedUrl = `${process.env.BASE_URL}panel/garage`;
+    await this.page.waitForURL(expectedUrl);
     const currentURL = this.page.url();
-    if (currentURL !== "https://qauto.forstudy.space/panel/garage") {
-      throw new Error(`Expected URL to be "https://qauto.forstudy.space/panel/garage" but found "${currentURL}"`);
+    if (currentURL !== expectedUrl) {
+      throw new Error(`Expected URL to be "${expectedUrl}" but found "${currentURL}"`);
     }
   }
 

@@ -10,7 +10,8 @@
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "test:quato-custom-env:headed": "cross-env ENV_FILE=./env-files/.env.qauto npx playwright test --headed --project=chrome",
-    "test:quato2-custom-env:headed": "cross-env ENV_FILE=./env-files/.env.qauto2 npx playwright test --headed --project=chrome"
+    "test:quato2-custom-env:headed": "cross-env ENV_FILE=./env-files/.env.qauto2 npx playwright test --headed --project=chrome",
+    "test:custom-env:headed": "npx playwright test tests/garagePage.spec.js --headed --project=chrome"
   },
   "author": "",
   "license": "ISC",

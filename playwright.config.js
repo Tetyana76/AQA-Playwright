@@ -61,10 +61,9 @@ export default defineConfig({
     //   name: 'Microsoft Edge',
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
     // },
-     { name: 'setup', testMatch: '*.setup.js' },
-    {
-      name: 'chrome',
-      use: { 
+    { name: 'setup', testMatch: '**/*.setup.js' },
+    { name: 'chrome',
+        use: { 
         ...devices['Desktop Chrome'], 
         channel: 'chrome',
         storageState: 'session-storage.json'

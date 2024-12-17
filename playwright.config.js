@@ -19,6 +19,7 @@ dotenv.config();
  */
 export default defineConfig({
   testDir: './tests',
+  timeout: 60000,
   // testMatch: '**/*.@(spec|test).?(c|m)[jt]s?(x)',
   /* Run tests in files in parallel */
   fullyParallel: false,
@@ -33,7 +34,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: process.env.BASE_URL,
+    baseURL: process.env.BASE_URL || 'https://qauto.forstudy.space',
     // baseURL: 'https://qauto.forstudy.space',
     // defaultCredentials: {
     //   username: process.env.user, 
@@ -61,7 +62,14 @@ export default defineConfig({
     //   name: 'Microsoft Edge',
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
     // },
-    { name: 'setup', testMatch: '**/*.setup.js' },
+    {
+      name: 'setup',
+      testMatch: '**/*.setup.js',
+      use: { 
+        ...devices['Desktop Chrome'], 
+        channel: 'chrome'
+      },
+    },
     { name: 'chrome',
         use: { 
         ...devices['Desktop Chrome'], 

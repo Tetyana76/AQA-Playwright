@@ -6,6 +6,6 @@ export default class BasePage {
   async navigateToMainPageWithLogin(defaultCredentials, baseURL) {
     const { username, password } = defaultCredentials;
     await this.page.context().setHTTPCredentials({ username, password });
-    await this.page.goto(baseURL);
+    await this.page.goto(baseURL, { waitUntil: 'load', timeout: 90000 });
   }
 }

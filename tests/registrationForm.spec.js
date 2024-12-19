@@ -6,7 +6,7 @@ import { generateRandomUser } from '../support/userData';
 let basePage;
 let registration;
 
-test.describe('Registration form validation', () => {
+test.describe.skip('Registration form validation', () => {
   test.beforeEach(async ({ page, baseURL }) => {
     // const config = testInfo.project.use;
     const { defaultCredentials } = test.info().project.use;

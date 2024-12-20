@@ -19,7 +19,7 @@ dotenv.config();
  */
 export default defineConfig({
   testDir: './tests',
-  timeout: 60000,
+  // timeout: 60000,
   // testMatch: '**/*.@(spec|test).?(c|m)[jt]s?(x)',
   /* Run tests in files in parallel */
   fullyParallel: false,
@@ -57,6 +57,24 @@ export default defineConfig({
     //   name: 'Microsoft Edge',
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
     // },
+    {
+      name: 'setup-firefox',
+      testMatch: '**/*.setup.js',
+      use: { 
+        ...devices['Desktop Firefox'],
+        channel: 'firefox'
+      },
+    },
+    {
+      name: 'firefox',
+      use: {
+        ...devices['Desktop Firefox'],
+        channel: 'firefox',
+        storageState: 'session-storage.json'
+      },
+      dependencies: ['setup-firefox'],
+    },
+
     {
       name: 'setup',
       testMatch: '**/*.setup.js',

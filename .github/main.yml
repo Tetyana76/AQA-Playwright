@@ -21,7 +21,7 @@ jobs:
     needs: lint-playwright
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.49.1-jammy
+      image: mcr.microsoft.com/playwright:v1.49.0-jammy
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3

@@ -4,7 +4,7 @@ on:
     branches:
       - "*"
   pull_request:
-    types: ['opened']
+    types: ['opened', 'synchronize']
 jobs:
   lint-playwright: 
     name: 'Lint Playwright tests folder'
@@ -30,7 +30,7 @@ jobs:
       - name: Install dependecies
         run: npm ci
       - name: Run e2e tests
-        run: npm run test:all:chromium
+        run: npm run test:all-chrome
       - uses: actions/upload-artifact@v3
         if: always()
         with:

@@ -29,7 +29,7 @@ test('Profile: Fetch and replace original response', async ({ browser }) => {
   );
 
     await page.goto('/panel/profile', { timeout: 60000 });
-    await page.pause();
+    // await page.pause();
     const displayedFullName = await page.locator('.profile_name.display-4').textContent();
     console.log('Displayed full name:', displayedFullName); 
     expect(displayedFullName).toBe('Maria Petrenko');

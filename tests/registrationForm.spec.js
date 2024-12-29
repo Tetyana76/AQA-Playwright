@@ -8,7 +8,6 @@ let registration;
 
 test.describe.skip('Registration form validation', () => {
   test.beforeEach(async ({ page, baseURL }) => {
-    // const config = testInfo.project.use;
     const { defaultCredentials } = test.info().project.use;
     basePage = new BasePage(page);
     registration = new Registration(page);

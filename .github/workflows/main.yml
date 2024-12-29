@@ -27,6 +27,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chrome
       - name: Install dependecies
         run: npm ci
       - name: Run e2e tests

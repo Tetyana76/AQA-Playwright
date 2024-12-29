@@ -9,7 +9,6 @@ test.describe('API: create cars', () => {
         const context = await browser.newContext({
             httpCredentials: { username: 'guest', password: 'welcome2qauto', send: 'always' }
         });
-        // const page = await context.newPage();
         const cookies = await context.cookies();
         const cookiesParsed = cookies.reduce((acc, curr) => `${acc}${curr.name}=${curr.value}; `, '');
         headers = { cookies: cookiesParsed };

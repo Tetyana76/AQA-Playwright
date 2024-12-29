@@ -17,7 +17,7 @@ test.describe.skip('Registration form validation', () => {
     await registration.clickRegistrationButton();
   });
 
-  test('Positive case: Create random user with Faker.js', async ({ page }) => {
+  test('Positive case: Create random user with Faker.js', async () => {
   const randomUser = generateRandomUser('aqa');
 
   await registration.fillSignupName(randomUser.firstName);

@@ -13,7 +13,11 @@
     "test:quato2-custom-env:headed": "cross-env ENV_FILE=./env-files/.env.qauto2 npx playwright test --headed --project=chrome",
     "test:custom-env:headed": "npx playwright test tests/profile.mock.spec.js --headed --project=chrome",
     "test:api": "npx playwright test tests/cars-api.spec.js",
+<<<<<<< HEAD
     "test:docker-firefox": "npx playwright test tests/registrationForm.js --project=firefox",
+=======
+    "test:docker-firefox": "npx playwright test tests/cars-api.spec.js --project=firefox",
+>>>>>>> main
     "test:all-chrome": "npx playwright test --project=chrome"
   },
   "author": "",

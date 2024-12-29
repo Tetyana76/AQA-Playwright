@@ -2,7 +2,7 @@ name: CI Testing
 on:
   push:
     branches:
-      - "homework31"
+      - "*"
   pull_request:
     types: ['opened']
 jobs:
